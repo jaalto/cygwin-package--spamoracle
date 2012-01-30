@@ -1,0 +1,76 @@
+From 6e566a1c43cf5f83b38df34b60d1d3e17ae27ba8 Mon Sep 17 00:00:00 2001
+From: Jari Aalto <jari.aalto@cante.net>
+Date: Thu, 20 Dec 2007 15:26:53 +0200
+Subject: [PATCH] Makefile: rewrite install target
+
+Signed-off-by: Jari Aalto <jari.aalto@cante.net>
+---
+ Makefile |   35 ++++++++++++++++++++++++++++++-----
+ 1 files changed, 30 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 294bd17..755f29f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,20 +1,34 @@
+ ### Configuration section
+ 
+ # The laguages you're interested in, besides English
+-LANGUAGES=-DFRENCH #-DSPANISH -DITALIAN -DGERMAN -DPORTUGUESE -DJAPANESE
++#LANGUAGES= -DFRENCH #-DSPANISH -DITALIAN -DGERMAN -DPORTUGUESE -DJAPANESE
+ 
+ # How to invoke the C preprocessor
+ CPP=gcc -E -P $(LANGUAGES) -
+ 
+ # Where to install the binary
+-BINDIR=/usr/local/bin
++# BINDIR=/usr/local/bin
+ 
+ # Where to install the man pages
+-MANDIR=/usr/local/man
++# MANDIR=/usr/local/man
++
++DESTDIR         =
++prefix          = /usr
++exec_prefix     = $(prefix)
++man_prefix      = $(prefix)/share
++
++INSTALL         = /usr/bin/install
++INSTALL_BIN     = $(INSTALL) -m 755
++INSTALL_DATA    = $(INSTALL) -m 644
++INSTALL_OBJS    = spamoracle
++
++MANDIR1         = $(DESTDIR)$(man_prefix)/man/man1
++MANDIR5         = $(DESTDIR)$(man_prefix)/man/man5
++BINDIR          = $(DESTDIR)$(exec_prefix)/bin
+ 
+ ### End of configuration section
+ 
+-OCAMLC=ocamlc -g
++OCAMLC=ocamlc # -g
+ OCAMLLEX=ocamllex
+ OCAMLDEP=ocamldep
+ OCAMLOPT=ocamlopt
+@@ -29,7 +43,18 @@ NATLIBS=$(BYTELIBS:.cma=.cmxa)
+ 
+ all: spamoracle
+ 
+-install:
++install-bin:
++	$(INSTALL_BIN) -d $(BINDIR)
++	$(INSTALL_BIN) -s $(INSTALL_OBJS) $(BINDIR)
++
++install-man:
++	$(INSTALL_BIN) -d $(MANDIR1) $(MANDIR5)
++	$(INSTALL_DATA) *.1 $(MANDIR1)
++	$(INSTALL_DATA) *.5 $(MANDIR5)
++
++install: all install-bin install-man
++
++install-old:
+ 	cp spamoracle $(BINDIR)/spamoracle
+ 	cp spamoracle.1 $(MANDIR)/man1/spamoracle.1
+ 	cp spamoracle.conf.5 $(MANDIR)/man5/spamoracle.conf.5
+-- 
+1.5.4-rc0.GIT
+

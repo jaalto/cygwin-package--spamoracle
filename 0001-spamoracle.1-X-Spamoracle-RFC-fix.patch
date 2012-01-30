@@ -1,0 +1,35 @@
+From a3dc9d66450848a4a8afc2d90df4c470b1de87ae Mon Sep 17 00:00:00 2001
+From: Jari Aalto <jari.aalto@cante.net>
+Date: Thu, 20 Dec 2007 15:49:02 +0200
+Subject: [PATCH] spamoracle.1: X-Spamoracle RFC fix
+
+Signed-off-by: Jari Aalto <jari.aalto@cante.net>
+---
+ spamoracle.1 |   10 +++++-----
+ 1 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/spamoracle.1 b/spamoracle.1
+index dad3328..0d92525 100644
+--- a/spamoracle.1
++++ b/spamoracle.1
+@@ -215,12 +215,12 @@ For each message in the given mailboxes, you'll see a summary like this:
+ .sp
+  From: bbo <midhack@ureach.com>
+  Subject: Check This Out
+- Score: 1.00 -- 15
+- Details: refid:98 $$$$:98 surfing:98 asp:95 click:93 cable:92
++ X-Spamoracle-Score: 1.00 -- 15
++ X-Spamoracle-Details: refid:98 $$$$:98 surfing:98 asp:95 click:93 cable:92
+    instantly:90 https:88 internet:87 www:86 U4:85 isn't:14 month:81
+-   com:75 surf:75 
+-Attachments: cset="GB2312" type="application/octet-stream"
+-   name="Guangwen4.zip" 
++   com:75 surf:75
++ X-Spamoracle-Attachments: cset="GB2312" type="application/octet-stream"
++   name="Guangwen4.zip"
+  File: inbox/314
+ .ft
+ .LP
+-- 
+1.5.4-rc0.GIT
+

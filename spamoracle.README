@@ -1,0 +1,79 @@
+spamoracle
+------------------------------------------
+
+OCaml based Bayesian spam filter
+
+A tool to help detect and filter away spam. It proceeds by statistical
+analysis of the words that appear in the email, comparing the
+frequencies of words with those found in a user-provided corpus of
+known spam and known legitimate email.
+
+Runtime requirements:
+  cygwin
+
+Build requirements:
+  cygwin
+  ocaml
+
+Canonical homepage:
+  http://freshmeat.net/projects/spamoracle
+  http://packages.debian.org/spamoracle
+
+Canonical download:
+  See above
+
+Version control repository:
+
+Mailing list:
+
+Forum / Wiki:
+
+IRC channel:
+
+Upstream contact:
+  Maintainer: <Xavier.Leroy@inria.fr>
+  Bugs: <Xavier.Leroy@inria.fr>
+
+License:
+  GPL
+
+Language:
+  OCaml
+
+------------------------------------
+
+Build instructions:
+  unpack spamoracle-1.4-1-src.tar.bz2
+    if you use setup to install this src package, it will be
+    unpacked under /usr/src automatically
+  cd /usr/src
+  ./spamoracle*.sh all
+
+This will create:
+  spamoracle-1.4-1.tar.bz2
+  spamoracle-1.4-1-src.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary distro:
+
+/usr/bin/spamoracle.exe
+/usr/share/doc/Cygwin/spamoracle-1.4.README
+/usr/share/doc/spamoracle-1.4/README
+/usr/share/man/man1/spamoracle.1.gz
+/usr/share/man/man5/spamoracle.conf.5.gz
+
+------------------
+
+Port Notes:
+- Outputted headers for mail messages violate email RFC:
+  "Score:", "Details:", "Attachement:". Thes were prefixed X-Spamoracle-*
+- Makefile:
+  * Rewrote installation.
+  * Option -g option removed from call to ocamlc.
+
+----- version 1.4-1 -----
+- Initial release 2007-12-20 Jari Aalto
+
+Cygwin port maintained by: Jari Aalto <jari.aalto@cante.net>
+Copyright (C) 2007 Jari Aalto; Licenced under GPL v2 or later

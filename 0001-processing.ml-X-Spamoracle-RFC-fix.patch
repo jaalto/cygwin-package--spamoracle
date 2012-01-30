@@ -1,0 +1,32 @@
+From edb36172ac084eed3a3fbbe594d197ebe0de137e Mon Sep 17 00:00:00 2001
+From: Jari Aalto <jari.aalto@cante.net>
+Date: Thu, 20 Dec 2007 15:47:13 +0200
+Subject: [PATCH] processing.ml: X-Spamoracle RFC fix
+
+Signed-off-by: Jari Aalto <jari.aalto@cante.net>
+---
+ processing.ml |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/processing.ml b/processing.ml
+index d8c4cdf..038fd0f 100644
+--- a/processing.ml
++++ b/processing.ml
+@@ -73,11 +73,11 @@ let test_message db low high f txt =
+     printf "--------------------------------------------------\n";
+     printf "From: %s\n" (header "from:" msg);
+     printf "Subject: %s\n" (header "subject:" msg);
+-    printf "Score: %.2f -- %d\n" r.spam_prob r.num_meaningful;
+-    printf "Details: %s\n" r.explanation;
++    printf "X-Spamoracle-Score: %.2f -- %d\n" r.spam_prob r.num_meaningful;
++    printf "X-Spamoracle-Details: %s\n" r.explanation;
+     if !Config.summarize_attachments then begin
+       let att = Attachments.summarize msg in
+-      if att <> "" then printf "Attachments: %s\n" att
++      if att <> "" then printf "X-Spamoracle-Attachments: %s\n" att
+     end;
+     printf "File: %s\n" f;
+   end
+-- 
+1.5.4-rc0.GIT
+
