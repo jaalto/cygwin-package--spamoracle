@@ -4,4 +4,4 @@ analysis of the words that appear in the email, comparing the
 frequencies of words with those found in a user-provided corpus of
 known spam and known legitimate email."
 category: Mail
-requires: cygwin
+requires:
